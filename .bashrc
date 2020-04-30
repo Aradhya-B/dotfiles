@@ -130,6 +130,11 @@ export NVM_DIR="$HOME/.nvm"
 alias vim="nvim"
 alias vi="nvim"
 alias myserver="ssh eddy@159.65.216.50"
+alias dotfiles='/usr/bin/git --git-dir=/home/eddy/.dotfiles/ --work-tree=/home/eddy'
+alias ml='cd /mnt/c/users/aradh/courses/machine-learning-a-z/code-and-datasets'
+alias notes='cd /mnt/c/users/aradh/OneDrive/Desktop/notes'
+alias python='python3'
+alias pip='pip3'
 
 # Banner and prompt
 
@@ -141,4 +146,3 @@ Red='\033[31m';
 Blu='\033[34m';
 Yel='\033[33m';
 PS1="${RCol}┌─[\`if [ \$? = 0 ]; then echo "${Gre}"; else echo "${Red}"; fi\`\t\[${Rcol}\] \[${Blu}\]\h\[${RCol}\] \[${Yel}\]\w\[${RCol}\]]\n└─╼ "
-alias dotfiles='/usr/bin/git --git-dir=/home/eddy/.dotfiles/ --work-tree=/home/eddy'
