@@ -312,7 +312,7 @@ let g:gruvbox_contrast_light='medium'
 let g:gruvbox_hls_cursor='orange'
 set background=dark
 " }}}
-" CUSTOME KEYBINDINGS {{{
+" CUSTOM KEYBINDINGS {{{
 let mapleader=","
 inoremap jj <Esc> 
 inoremap jk <Esc> 
