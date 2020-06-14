@@ -106,7 +106,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export GOOGLE_APPLICATION_CREDENTIALS="/mnt/c/users/aradh/Downloads/ltv-numbers-dev-5f0466a8a71d.json"
-export EDITOR=vim
+export EDITOR=nvim
+export PATH="$HOME/bin:$PATH"
+
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -119,7 +123,6 @@ if ! shopt -oq posix; then
   fi
 fi
 source /etc/profile.d/bash_completion.sh
-cd /mnt/c/users/aradh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -127,14 +130,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Aliases 
 
-alias vim="nvim"
-alias vi="nvim"
-alias myserver="ssh eddy@159.65.216.50"
-alias dotfiles='/usr/bin/git --git-dir=/home/eddy/.dotfiles/ --work-tree=/home/eddy'
-alias ml='cd /mnt/c/users/aradh/courses/machine-learning-a-z/code-and-datasets'
-alias notes='cd /mnt/c/users/aradh/OneDrive/Desktop/notes'
-alias python='python3'
-alias pip='pip3'
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
 
 # Banner and prompt
 
@@ -146,3 +144,5 @@ Red='\033[31m';
 Blu='\033[34m';
 Yel='\033[33m';
 PS1="${RCol}┌─[\`if [ \$? = 0 ]; then echo "${Gre}"; else echo "${Red}"; fi\`\t\[${Rcol}\] \[${Blu}\]\h\[${RCol}\] \[${Yel}\]\w\[${RCol}\]]\n└─╼ "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
