@@ -324,10 +324,23 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>hs :split<CR>
+nnoremap <leader>shs :split<CR> \| <C-w>j \| :terminal<CR>
+nnoremap <leader>svs :vsplit<CR> \| <C-w>l \| :terminal<CR>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+map gn :bn<CR>
+map gp :bp<CR>
+
+" Terminal Mode
+tnoremap <Esc> <C-\><C-n>
+
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+
 " }}}
 " CUSTOM SETTINGS {{{
 set modelines=1 " read fold settings at bottom of file
