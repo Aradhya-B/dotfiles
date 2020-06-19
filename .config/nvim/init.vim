@@ -12,10 +12,10 @@ Plug 'morhetz/gruvbox'
 Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-Plug 'greghor/vim-pyShell'
-Plug 'julienr/vim-cellmode'
 Plug 'benmills/vimux'
 Plug 'jiangmiao/auto-pairs'
+Plug 'greghor/vim-pyShell'
+Plug 'tpope/vim-commentary'
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -29,7 +29,7 @@ call plug#end()
 " DENITE {{{2
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
-" Use ripgrep in place of "grep"
+" Use ripgrep in place of grep
 call denite#custom#var('grep', 'command', ['rg'])
 
 " Custom options for ripgrep
@@ -87,9 +87,9 @@ call s:profile(s:denite_options)
 "   <C-p> - Browse list of files in current directory
 "   <leader>g - Search current directory for occurences of given term and close window if no results
 "   <leader>j - Search current directory for occurences of word under cursor
-nmap ; :Denite buffer<CR>
+nmap <C-b> :Denite buffer<CR>
 nmap <C-p> :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
+nnoremap \ :<C-u>Denite grep:. -no-empty<CR>
 nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 
 " Define mappings while in 'filter' mode
@@ -103,9 +103,9 @@ autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
   imap <silent><buffer> <C-o>
   \ <Plug>(denite_filter_quit)
-  inoremap <silent><buffer><expr> <Esc>
+  inoremap <silent><buffer><expr> jk
   \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
+  nnoremap <silent><buffer><expr> jk
   \ denite#do_map('quit')
   inoremap <silent><buffer><expr> <CR>
   \ denite#do_map('do_action')
@@ -172,6 +172,11 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -179,15 +184,9 @@ inoremap <silent><expr> <C-j>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <C-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -208,8 +207,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K or gh to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -313,25 +310,35 @@ let g:gruvbox_hls_cursor='orange'
 set background=dark
 " }}}
 " CUSTOM KEYBINDINGS {{{
-let mapleader=","
+let mapleader=" "
 inoremap jj <Esc> 
 inoremap jk <Esc> 
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap E $
 nnoremap B ^
-nnoremap <leader>q :q<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>wq :wq<CR>
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>hs :split<CR>
-nnoremap <leader>shs :split<CR> \| <C-w>j \| :terminal<CR>
-nnoremap <leader>svs :vsplit<CR> \| <C-w>l \| :terminal<CR>
+nnoremap <leader>ht :split<CR> \| :terminal<CR>
+nnoremap <leader>vt :vsplit<CR> \| :terminal<CR>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 map gn :bn<CR>
 map gp :bp<CR>
+
+" Use alt + hjkl to resize windows
+nnoremap <M-j> :resize -2<CR>
+nnoremap <M-k> :resize +2<CR>
+nnoremap <M-h> :vertical resize -2<CR>
+nnoremap <M-l> :vertical resize +2<CR>
+
+" Alternate way to save
+nnoremap <C-s> :w<CR>
+
+" Better Tabbing
+vnoremap < <gv
+vnoremap > >gv
 
 " Terminal Mode
 tnoremap <Esc> <C-\><C-n>
@@ -348,7 +355,8 @@ set tabstop=2	" number of visual spaces per TAB
 set softtabstop=2   " number of spaces in tab when editing 
 set shiftwidth=2
 set expandtab   " tabs are spaces
-
+set splitbelow
+set splitright
 
 set showcmd
 set wildmenu
