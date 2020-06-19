@@ -16,6 +16,9 @@ Plug 'benmills/vimux'
 Plug 'jiangmiao/auto-pairs'
 Plug 'greghor/vim-pyShell'
 Plug 'tpope/vim-commentary'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -299,6 +302,37 @@ noremap ,sk :call StopPyShell()<CR>
 nnoremap ,r  :call PyShellSendLine()<CR>
 vnoremap ,r  :call PyShellSendLine()<CR>
 noremap <C-a> :call RunTmuxPythonAllCellsAbove()<CR>
+" }}}2
+" AIRLINE {{{2
+let g:airline_theme="gruvbox"
+let g:airline_powerline_fonts = 1
+let g:airline_section_y = "BN: %{bufnr('%')}"
+
+let g:airline#extensions#tabline#enabled = 1           " enable airline tabline
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#tabs_label = "BUFFERS"       " can put text here like BUFFERS to denote buffers
+let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 " }}}2
 " }}}
 " COLORSCHEME {{{
