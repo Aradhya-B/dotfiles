@@ -19,6 +19,8 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'unblevable/quick-scope'
+Plug 'justinmk/vim-sneak'
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -296,12 +298,11 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>u :UndoTreeToggle<CR>
 " }}}2
 " PYTHON SHELL {{{2
-noremap ,ss :call StartPyShell()<CR>
-noremap ,sk :call StopPyShell()<CR>
+noremap <leader>ss :call StartPyShell()<CR>
+noremap <leader>ks :call StopPyShell()<CR>
 
-nnoremap ,r  :call PyShellSendLine()<CR>
-vnoremap ,r  :call PyShellSendLine()<CR>
-noremap <C-a> :call RunTmuxPythonAllCellsAbove()<CR>
+nnoremap <leader>r  :call PyShellSendLine()<CR>
+vnoremap <leader>r  :call PyShellSendLine()<CR>
 " }}}2
 " AIRLINE {{{2
 let g:airline_theme="gruvbox"
@@ -334,6 +335,30 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 " }}}2
+" QUICKSCOPE {{{2
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopePrimary guifg='afff5f' gui=underline ctermfg=81 cterm=underline
+" }}}
+" SNEAK {{{2
+let g:sneak#label = 1
+
+" case insensitive sneak
+let g:sneak#use_ic_scs = 1
+
+" immediately move to the next instance of search, if you move the cursor sneak is back the default behavior
+" map gS <Plug>Sneak_,
+" map gs <Plug>Sneak_;
+
+highlight Sneak guifg=black guibg=#00C7DF ctermfg=black ctermbg=cyan
+highlight SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow
+
+let g:sneak#prompt = '🔎'
+
+map v s
+map V S
+" }}}2
 " }}}
 " COLORSCHEME {{{
 colorscheme gruvbox
@@ -348,8 +373,8 @@ let mapleader=" "
 inoremap jj <Esc> 
 inoremap jk <Esc> 
 nnoremap <leader><space> :nohlsearch<CR>
-nnoremap E $
-nnoremap B ^
+nnoremap ) $
+nnoremap 0 ^
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>hs :split<CR>
 nnoremap <leader>ht :split<CR> \| :terminal<CR>
