@@ -16,10 +16,12 @@ Plug 'benmills/vimux'
 Plug 'jiangmiao/auto-pairs'
 Plug 'greghor/vim-pyShell'
 Plug 'tpope/vim-commentary'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'tpope/vim-fugitive'
 Plug 'unblevable/quick-scope'
+Plug 'alvan/vim-closetag'
 Plug 'justinmk/vim-sneak'
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -304,36 +306,30 @@ noremap <leader>ks :call StopPyShell()<CR>
 nnoremap <leader>r  :call PyShellSendLine()<CR>
 vnoremap <leader>r  :call PyShellSendLine()<CR>
 " }}}2
-" AIRLINE {{{2
-let g:airline_theme="gruvbox"
-let g:airline_powerline_fonts = 1
-let g:airline_section_y = "BN: %{bufnr('%')}"
+" LIGHTLINE {{{2
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'landscape',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
+:set showtabline=2
 
-let g:airline#extensions#tabline#enabled = 1           " enable airline tabline
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#tabs_label = "BUFFERS"       " can put text here like BUFFERS to denote buffers
-let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab
-
-" air-line
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
 " }}}2
 " QUICKSCOPE {{{2
 " let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -348,16 +344,54 @@ let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 
 " immediately move to the next instance of search, if you move the cursor sneak is back the default behavior
-" map gS <Plug>Sneak_,
-" map gs <Plug>Sneak_;
+let g:sneak#s_next = 1
 
 highlight Sneak guifg=black guibg=#00C7DF ctermfg=black ctermbg=cyan
 highlight SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow
 
 let g:sneak#prompt = '🔎'
+" }}}2
+" CLOSETAG {{{2
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js,*.tsx'
 
-map v s
-map V S
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
 " }}}2
 " }}}
 " COLORSCHEME {{{
@@ -410,6 +444,7 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 " }}}
 " CUSTOM SETTINGS {{{
 set modelines=1 " read fold settings at bottom of file
+set encoding=UTF-8
 set tabstop=2	" number of visual spaces per TAB
 set softtabstop=2   " number of spaces in tab when editing 
 set shiftwidth=2
