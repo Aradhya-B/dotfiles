@@ -25,13 +25,21 @@ Plug 'alvan/vim-closetag'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 " }}}
 " CONFIGURE PLUGINS {{{
 " FZF {{{2
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :ProjectFiles<CR>
 nnoremap <silent> <C-t> :Lines<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -187,8 +195,8 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>u :UndoTreeToggle<CR>
 " }}}2
 " PYTHON SHELL {{{2
-noremap <leader>ss :call StartPyShell()<CR>
-noremap <leader>ks :call StopPyShell()<CR>
+nnoremap <leader>hf :call StartPyShell()<CR>
+nnoremap <leader>khf :call StopPyShell()<CR>
 
 nnoremap <leader>r  :call PyShellSendLine()<CR>
 vnoremap <leader>r  :call PyShellSendLine()<CR>
@@ -287,12 +295,15 @@ syntax enable
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='medium'
 let g:gruvbox_hls_cursor='orange'
+
+let g:vim_jsx_pretty_colorful_config = 1
 set background=dark
 " }}}
 " CUSTOM KEYBINDINGS {{{
 let mapleader=" "
 inoremap jj <Esc> 
 inoremap jk <Esc> 
+inoremap kj <Esc> 
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap ) $
 nnoremap 0 ^
@@ -307,6 +318,7 @@ nnoremap <C-h> <C-w>h
 map gn :bn<CR>
 map gp :bp<CR>
 nnoremap <leader>bd :bd<CR>
+nnoremap <leader>so :so $MYVIMRC<CR>
 
 " Use alt + hjkl to resize windows
 nnoremap <M-j> :resize -2<CR>
@@ -339,6 +351,7 @@ set shiftwidth=2
 set expandtab   " tabs are spaces
 set splitbelow
 set splitright
+set modifiable
 
 set showcmd
 set wildmenu
