@@ -1,0 +1,32 @@
+{
+  "commands": {
+    "%2Fmnt%2Fc%2Fusers%2Faradh%2FOneDrive%2FDesktop%2Fnotes%2Fstartups": [
+      "markdo",
+      "markdownlint.fixAll",
+      "mar"
+    ],
+    "%2Fmnt%2Fc%2Fusers%2Faradh%2Fdevelopment%2Fprojects%2F4-Snake": [
+      "mark"
+    ],
+    "%2Fhome%2Feddy%2Fwork": [
+      "all"
+    ],
+    "%2Fhome%2Feddy%2Fcourses%2Fmachine-learning-a-z%2Fcode-and-datasets%2FPart%202%20-%20Regression%2FSection%206%20-%20Polynomial%20Regression%2FPython": [
+      "python.setInte",
+      "python set interpreter",
+      "python set inter"
+    ]
+  },
+  "symbols": {
+    "%2Fhome%2Feddy%2Fwork%2Fnama": [
+      "s"
+    ],
+    "%2Fhome%2Feddy%2Fwork": [
+      "s",
+      "kk"
+    ],
+    "%2Fhome%2Feddy%2Fcourses%2Fmachine-learning-a-z%2Fcode-and-datasets%2FPart%202%20-%20Regression%2FSection%205%20-%20Multiple%20Linear%20Regression%2FPython": [
+      "pjjjk`kK:q`"
+    ]
+  }
+}

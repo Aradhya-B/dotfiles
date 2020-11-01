@@ -1,0 +1,46 @@
+{
+	"analytics-uuid": "d3712fc8-1d58-4568-a0f9-24b5455707fe",
+	"motd": {
+		"cloudBuildErrorAfter": 1592870400000,
+		"cloudBuildWarnAfter": 1590019200000,
+		"defaultNode10After": 1592870400000,
+		"minVersion": "3.0.5",
+		"node8DeploysDisabledAfter": 1608076800000,
+		"node8RuntimeDisabledAfter": 1613347200000,
+		"node8WarnAfter": 1600128000000
+	},
+	"motd.fetched": 1590254581696,
+	"usage": false,
+	"user": {
+		"iss": "accounts.google.com",
+		"azp": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"aud": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"sub": "110426805040396893134",
+		"email": "aradhyabansal2000@gmail.com",
+		"email_verified": true,
+		"at_hash": "HTgGnHvVlK2f3TVn-aErqA",
+		"iat": 1583623364,
+		"exp": 1583626964
+	},
+	"tokens": {
+		"expires_at": 1590258180585,
+		"refresh_token": "1//0fmZaGK2ySDOyCgYIARAAGA8SNwF-L9IrGcEaUYLn4D2UsNorHnLZSAQ7YtszL_7Z4APRBr6pm3-GDpIHgWssiTY6J08-wMimBYY",
+		"scopes": [
+			"email",
+			"https://www.googleapis.com/auth/cloud-platform",
+			"https://www.googleapis.com/auth/cloudplatformprojects.readonly",
+			"https://www.googleapis.com/auth/firebase",
+			"openid"
+		],
+		"access_token": "ya29.a0AfH6SMA3MvE2WElQNdLPjhlQxDa14sh49tQV6XiFcnQXhRPkMEbULhB7rd6SMb76-vJGMp2a9XcdoGYM5iYqmP5ZNsoP3mrNhX2plSRUyU5ReQHogC0ORAJbjqJYrHN8sc8QirI-GDUR_p2gSYddDlE9yOSnw9brnANjmKVMXdcvzw",
+		"expires_in": 3599,
+		"scope": "openid https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/firebase https://www.googleapis.com/auth/cloud-platform",
+		"token_type": "Bearer",
+		"id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk2MGE3ZThlODM0MWVkNzUyZjEyYjE4NmZhMTI5NzMxZmUwYjA0YzAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEwNDI2ODA1MDQwMzk2ODkzMTM0IiwiZW1haWwiOiJhcmFkaHlhYmFuc2FsMjAwMEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IndBVnVTd0NEcWRGeXJoRFJVSGx0WVEiLCJpYXQiOjE1OTAyNTQ1ODEsImV4cCI6MTU5MDI1ODE4MX0.bu8Awb-Sek-fUQ2hWXAY9aC3SUqGQ0EZh1y7uKFwGAhEXXS6swKDBcEBtexiH1cL2hzUAOTw3Cc3r2wzBhCbc4cuF_P-cf0LGKsxkrAL5iuJsNS2PtpL4GyuyBfKApjDYCA7n_Oidp_CLFv9tKKhvYn2sICLDLSBoxHuY0QOEtbWDNisw1EzOSSZxgF5pDVFOZiOYLHVcTNuEgK7WUWYTm0Qoneoe6IeY21qg03ub99UwMXuM-YbVrs07xJptH3bRbHuD-RZEZshPcqqYwYj9chC8mOPRPUc8w5dh0uOyUM6qA6b1vNTj8CsR5HYCV_-80msRvvPd3tBp9DeOHoDiw"
+	},
+	"activeProjects": {
+		"/mnt/c/users/aradh/Documents/ltv-numbers": "dev",
+		"/mnt/c/users/aradh/development/ltv-numbers": "dev",
+		"/home/eddy/work/ltv-numbers": "dev"
+	}
+}

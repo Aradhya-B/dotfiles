@@ -27,6 +27,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'vim-scripts/SyntaxRange'
 call plug#end()
 " }}}
 " CONFIGURE PLUGINS {{{
@@ -195,8 +196,8 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>u :UndoTreeToggle<CR>
 " }}}2
 " PYTHON SHELL {{{2
-nnoremap <leader>hf :call StartPyShell()<CR>
-nnoremap <leader>khf :call StopPyShell()<CR>
+nnoremap <leader>bp :call StartPyShell()<CR>
+nnoremap <leader>kbp :call StopPyShell()<CR>
 
 nnoremap <leader>r  :call PyShellSendLine()<CR>
 vnoremap <leader>r  :call PyShellSendLine()<CR>
@@ -352,6 +353,7 @@ set expandtab   " tabs are spaces
 set splitbelow
 set splitright
 set modifiable
+set smartindent
 
 set showcmd
 set wildmenu

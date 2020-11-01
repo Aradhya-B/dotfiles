@@ -106,11 +106,15 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export GOOGLE_APPLICATION_CREDENTIALS="/mnt/c/users/aradh/Downloads/ltv-numbers-dev-5f0466a8a71d.json"
+# export GOOGLE_APPLICATION_CREDENTIALS="/mnt/c/users/aradh/Downloads/alakazam-878534d29bf1.json"
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
 
 export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 export LIBGL_ALWAYS_INDIRECT=1
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+export DENO_INSTALL="/home/$USER/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

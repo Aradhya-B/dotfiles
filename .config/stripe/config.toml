@@ -1,0 +1,8 @@
+color = ""
+
+[default]
+  device_name = "LAPTOP-UARVVR89"
+  live_mode_api_key = "rk_live_zStwq2UFzqz39wwXC7om5Law00tmSgonNy"
+  live_mode_publishable_key = "pk_live_wOsbA57fhK8zdis5aN2Xo0OE"
+  test_mode_api_key = "rk_test_1tMqRSqHkkV065hYrrluiJl000zQbW4SqY"
+  test_mode_publishable_key = "pk_test_uvI9WVTCjcNK95kahiAe11j2"
