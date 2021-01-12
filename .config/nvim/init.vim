@@ -10,10 +10,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 Plug 'morhetz/gruvbox'
 Plug 'mbbill/undotree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'greghor/vim-pyShell'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -28,11 +29,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-scripts/SyntaxRange'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 " }}}
 " CONFIGURE PLUGINS {{{
 " FZF {{{2
-nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <C-t> :Lines<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 

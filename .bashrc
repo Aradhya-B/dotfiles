@@ -109,7 +109,6 @@ export GOOGLE_APPLICATION_CREDENTIALS="/mnt/c/users/aradh/Downloads/ltv-numbers-
 # export GOOGLE_APPLICATION_CREDENTIALS="/mnt/c/users/aradh/Downloads/alakazam-878534d29bf1.json"
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
-
 export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 export LIBGL_ALWAYS_INDIRECT=1
 export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
@@ -140,13 +139,22 @@ fi
 
 # Banner and prompt
 
-# toilet -f bigmono9 -F gay -F crop Ambition
+# toilet -f bigmono9 -F gay -F crop eddy
 
 RCol='\033[0m'
 Gre='\033[32m';
 Red='\033[31m';
 Blu='\033[34m';
 Yel='\033[33m';
-PS1="${RCol}┌─[\`if [ \$? = 0 ]; then echo "${Gre}"; else echo "${Red}"; fi\`\t\[${Rcol}\] \[${Blu}\]\h\[${RCol}\] \[${Yel}\]\w\[${RCol}\]]\n└─╼ "
+# PS1="${RCol}┌─[\`if [ \$? = 0 ]; then echo "${Gre}"; else echo "${Red}"; fi\`\t\[${Rcol}\] \[${Blu}\]\h\[${RCol}\] \[${Yel}\]\w\[${RCol}\]]\n└─╼ "
+PS1="${RCol}┌─[\`if [ \$? = 0 ]; then echo "${Blu}"; else echo "${Red}"; fi\`\u\[${RCol}\] \[${Yel}\]\w\[${RCol}\]]\n└─╼ "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Powerline
+# if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
+#   powerline-daemon -q
+#   POWERLINE_BASH_CONTINUATION=1
+#   POWERLINE_BASH_SELECT=1
+#   source /usr/share/powerline/bindings/bash/powerline.sh
+# fi
