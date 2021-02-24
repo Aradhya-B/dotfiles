@@ -6,5 +6,6 @@
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "python", "typescript", "typescriptreact", "json", "typescript.tsx"],
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": false
+  "python.linting.flake8Enabled": false,
+  "omnisharp.useGlobalMono": "always"
 }

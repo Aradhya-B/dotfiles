@@ -14,7 +14,7 @@ Plug 'preservim/nerdtree'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'greghor/vim-pyShell'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'

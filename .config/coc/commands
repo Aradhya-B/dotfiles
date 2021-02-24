@@ -1,8 +1,2 @@
-python.setInterpreter
-eslint.executeAutofix
 eslint.createConfig
-deno.types
-python.setLinter
-python.viewOutput
-markdownlint.fixAll
-workspace.clearWatchman
+list
