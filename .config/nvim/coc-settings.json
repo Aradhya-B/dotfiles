@@ -3,7 +3,7 @@
   "python.jediPath": "/home/eddy/.local/lib/python3.7/site-packages",
   "python.pythonPath": "python3",
   "suggest.echodocSupport": true,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "python", "typescript", "typescriptreact", "json", "typescript.tsx"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "typescript", "typescriptreact", "json", "typescript.tsx"],
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "python.linting.flake8Enabled": false,

@@ -9,12 +9,12 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'greghor/vim-pyShell'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -31,11 +31,14 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 call plug#end()
 " }}}
 " CONFIGURE PLUGINS {{{
 " FZF {{{2
-nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-t> :Lines<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 
@@ -43,7 +46,7 @@ function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
+" command! ProjectFiles execute 'Files' s:find_git_root()
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -292,6 +295,15 @@ let g:closetag_shortcut = '>'
 "
 let g:closetag_close_shortcut = '<leader>>'
 " }}}2
+" ULTISNIPS {{{2
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" let g:UltiSnipsListSnippets="<c-m>"
+let g:UltiSnipsEditSplit="vertical"
+
+nnoremap <leader>es :UltiSnipsEdit<cr>
+" }}}2
 " }}}
 " COLORSCHEME {{{
 colorscheme gruvbox
@@ -305,9 +317,10 @@ set background=dark
 " }}}
 " CUSTOM KEYBINDINGS {{{
 let mapleader=" "
-inoremap jj <Esc> 
-inoremap jk <Esc> 
-inoremap kj <Esc> 
+inoremap jj <Esc>
+inoremap kk <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap ) $
 nnoremap 0 ^
@@ -324,6 +337,10 @@ map gp :bp<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>so :so $MYVIMRC<CR>
 
+" Quickly insert an empty new line without entering insert mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
 " Use alt + hjkl to resize windows
 nnoremap <M-j> :resize -2<CR>
 nnoremap <M-k> :resize +2<CR>
@@ -336,6 +353,9 @@ nnoremap <C-s> :w<CR>
 " Better Tabbing
 vnoremap < <gv
 vnoremap > >gv
+
+" Delete buffers without deleting window
+command Bd bp | sp | bn | bd
 
 " Terminal Mode
 tnoremap <Esc> <C-\><C-n>
