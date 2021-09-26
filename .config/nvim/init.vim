@@ -34,6 +34,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
+Plug 'mlaursen/vim-react-snippets'
 call plug#end()
 " }}}
 " CONFIGURE PLUGINS {{{
@@ -341,6 +342,10 @@ nnoremap <leader>so :so $MYVIMRC<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
+" Zoom in and out of buffers
+noremap Zz <c-w>_ \| <c-w>\|
+noremap Zo <c-w>=
+
 " Use alt + hjkl to resize windows
 nnoremap <M-j> :resize -2<CR>
 nnoremap <M-k> :resize +2<CR>
@@ -402,6 +407,8 @@ augroup configgroup
   autocmd FileType java setlocal list
   autocmd FileType java setlocal listchars=tab:+\ ,eol:-
   autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+	autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+	autocmd FileType typescript.tsx setlocal commentstring={/*\ %s\ */}
 augroup END
 " }}}
 " STATUSLINE {{{
